@@ -6,7 +6,6 @@
 #include "j1Audio.h"
 #include "j1Render.h"
 #include "j1Window.h"
-#include "j1Map.h"
 #include "j1Scene.h"
 
 j1Scene::j1Scene() : j1Module()
@@ -30,7 +29,7 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
-	App->map->Load("hello2.tmx");
+	
 	return true;
 }
 
@@ -62,14 +61,9 @@ bool j1Scene::Update(float dt)
 		App->render->camera.x += 1;
 
 	//App->render->Blit(img, 0, 0);
-	App->map->Draw();
 
 	// TODO 7: Set the window title like
-	// "Map:%dx%d Tiles:%dx%d Tilesets:%d"
-	p2SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
-					App->map->data.width, App->map->data.height,
-					App->map->data.tile_width, App->map->data.tile_height,
-					App->map->data.tilesets.count());
+	p2SString title("2D Particle System");
 
 	App->win->SetTitle(title.GetString());
 	return true;
