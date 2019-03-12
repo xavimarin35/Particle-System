@@ -82,6 +82,7 @@
     <ClCompile Include="j1Audio.cpp" />
     <ClCompile Include="j1Input.cpp" />
     <ClCompile Include="j1Particle.cpp" />
+    <ClCompile Include="j1ParticleManager.cpp" />
     <ClCompile Include="j1Scene.cpp" />
     <ClCompile Include="p2Log.cpp" />
     <ClCompile Include="j1Render.cpp" />
@@ -92,6 +93,7 @@
   <ItemGroup>
     <ClInclude Include="j1Emitter.h" />
     <ClInclude Include="j1Particle.h" />
+    <ClInclude Include="j1ParticleManager.h" />
     <ClInclude Include="j1Scene.h" />
     <ClInclude Include="j1Audio.h" />
     <ClInclude Include="j1Input.h" />
