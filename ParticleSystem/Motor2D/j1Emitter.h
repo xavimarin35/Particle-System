@@ -3,31 +3,26 @@
 
 #include "j1Module.h"
 
+#include "j1Particle.h"
+#include "j1ParticleManager.h"
+
+#include "p2Point.h"
+
+enum EMMITER_TYPE
+{
+	EMMITER_FIRE,
+	EMMITER_EXPLOSION
+};
+
 class j1Emitter
 {
 public:
 
-	j1Emitter();
-
-	// Destructor
+	j1Emitter(fPoint pos);
 	virtual ~j1Emitter();
 
-	// Called before render is available
-	bool Awake();
 
-	// Called before the first frame
-	bool Start();
-
-	// Called before all Updates
-	bool PreUpdate();
-
-	// Called each loop iteration
 	bool Update(float dt);
-
-	// Called before all Updates
-	bool PostUpdate();
-
-	// Called before quitting
 	bool CleanUp();
 
 private:
