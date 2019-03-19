@@ -12,6 +12,7 @@ class j1Render;
 class j1Textures;
 class j1Audio;
 class j1Scene;
+class j1ParticleManager;
 
 class j1App
 {
@@ -81,6 +82,7 @@ public:
 	j1Textures*			tex;
 	j1Audio*			audio;
 	j1Scene*			scene;
+	j1ParticleManager*	ps_manager;
 
 private:
 

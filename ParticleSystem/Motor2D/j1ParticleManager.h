@@ -3,7 +3,7 @@
 
 #include "j1Module.h"
 
-class j1ParticleManager
+class j1ParticleManager : public j1Module
 {
 public:
 

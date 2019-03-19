@@ -43,10 +43,7 @@ bool j1Scene::PreUpdate()
 bool j1Scene::Update(float dt)
 {
 	
-	//if(App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
-		//App->LoadGame();
 
-	// TODO 7: Set the window title like
 	p2SString title("2D Particle System");
 
 	App->win->SetTitle(title.GetString());

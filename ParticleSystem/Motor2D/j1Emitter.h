@@ -8,6 +8,8 @@
 
 #include "p2Point.h"
 
+struct ParticleInfo;
+
 enum EMMITER_TYPE
 {
 	EMMITER_FIRE,
