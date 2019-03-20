@@ -6,3 +6,6 @@ This content is generated for the second year’s subject Project 2, under super
 [Ricard Pillosu](https://es.linkedin.com/in/ricardpillosu).
 
 This 2D particle system has been programmed in C++.
+
+## Index
+* Introduction
