@@ -7,5 +7,30 @@ This content is generated for the second year’s subject Project 2, under super
 
 This 2D particle system has been programmed in C++.
 
-## Index
-* Introduction
+## About particle systems
+### What is it?
+
+### Do we really use them?
+
+
+## How is organized?
+### Pool
+
+### Emitter
+
+### Particle
+
+### ParticleManager
+
+
+## How is implemented?
+
+
+## TODO's
+
+
+## How does it look this particle system
+
+
+## References
+
