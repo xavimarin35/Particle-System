@@ -40,6 +40,9 @@
     <ClCompile Include="j1ParticleManager.cpp">
       <Filter>Desenvolupament  ========\Particle System</Filter>
     </ClCompile>
+    <ClCompile Include="j1Pool.cpp">
+      <Filter>Desenvolupament  ========\Particle System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="j1Window.h">
@@ -94,6 +97,9 @@
       <Filter>Desenvolupament  ========\Particle System</Filter>
     </ClInclude>
     <ClInclude Include="j1ParticleManager.h">
+      <Filter>Desenvolupament  ========\Particle System</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Pool.h">
       <Filter>Desenvolupament  ========\Particle System</Filter>
     </ClInclude>
   </ItemGroup>
