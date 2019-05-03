@@ -7,16 +7,14 @@ This content is generated for the second year’s subject Project 2, under super
 
 This C++ Particle System has been programmed using [Visual Studio](https://visualstudio.microsoft.com/es/vs/) and [SDL](https://www.libsdl.org/index.php).
 
-
 Feel free to visit:
-- [My Website](https://xavimarin35.github.io/Particle-System/)
-- [My Repository](https://github.com/xavimarin35)
+- [Particle System Website](https://xavimarin35.github.io/Particle-System/)
 
-### General Controls
+## General Controls
 - LEFT MOUSE BUTTON: Enable or disable fire on current mouse position.
 - RIGHT MOUSE BUTTON: Create an emitter on current mouse position.
 - SPACE: Remove all the emitters of the screen.
 
-### License
+## License
 Licensed under the [MIT License](LICENSE)
 
