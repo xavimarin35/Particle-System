@@ -33,4 +33,13 @@ This 2D particle system has been programmed in C++.
 
 
 ## References
-
+- https://gamedevelopment.tutsplus.com/tutorials/make-your-game-pop-with-particle-effects-and-quadtrees--gamedev-2138 
+- http://buildnewgames.com/particle-systems/ 
+- https://gamedevelopment.tutsplus.com/articles/mastering-the-gamemaker-studio-particle-system--cms-22782 
+- https://learnopengl.com/In-Practice/2D-Game/Particles 
+- https://www.3dgep.com/simulating-particle-effects-using-opengl/ 
+- https://www.codeproject.com/Articles/10003/A-basic-Particles-System 
+- https://natureofcode.com/book/chapter-4-particle-systems/ 
+- http://gameprogrammingpatterns.com/object-pool.html 
+- https://www.khanacademy.org/computing/computer-programming/programming-natural-simulations/programming-particle-systems/a/a-particle-system 
+- https://stackoverflow.com/questions/13488957/interpolate-from-one-color-to-another
