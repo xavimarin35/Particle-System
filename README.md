@@ -8,11 +8,16 @@ This content is generated for the second year’s subject Project 2, under super
 This 2D particle system has been programmed in C++.
 
 ## About particle systems
-### What is it?
+### What are them?
+A particle system is a collection of many many minute particles that together represent a fuzzy object. Over a period of time, particles are generated into a system, move and change from within the system, and die from the system.”
 
 ### Do we really use them?
+Since the early 1980s, particle systems have been used in countless videogames, animations, digital art pieces, and installations to model various irregular types of natural phenomena, such as fire, smoke, waterfalls, fog, grass, bubbles, and so on.
 
-
+Particle systems are important because they have a notorious visual impact that make the player experience better.
+Here you can see some examples:
+![Dragon Ball]()
+![Battlefield]()
 ## How is organized?
 ### Pool
 
@@ -29,7 +34,7 @@ This 2D particle system has been programmed in C++.
 ## TODO's
 
 
-## How does it look this particle system
+## How does it look this particle system?
 
 
 ## References
