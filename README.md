@@ -5,8 +5,6 @@ I am [Xavi Marín Solà](https://www.linkedin.com/in/xavi-mar%C3%ADn-sol%C3%A0-8
 This content is generated for the second year’s subject Project 2, under supervision of lecturer
 [Ricard Pillosu](https://es.linkedin.com/in/ricardpillosu).
 
-This 2D particle system has been programmed in C++.
-
 ## About particle systems
 ### What are them?
 A particle system is a collection of many many minute particles that together represent a fuzzy object. Over a period of time, particles are generated into a system, move and change from within the system, and die from the system.”
@@ -22,8 +20,9 @@ Here you can see some examples:
 ![Battlefield](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/giphy%20(1).gif)
 ## How is organized?
 ### Pool
-
+The pool improves performance and memory use by reusing objects from a fixed pool instead of allocating and freeing them individually.
 ### Emitter
+The emitter 
 
 ### Particle
 
@@ -50,3 +49,4 @@ Here you can see some examples:
 - http://gameprogrammingpatterns.com/object-pool.html 
 - https://www.khanacademy.org/computing/computer-programming/programming-natural-simulations/programming-particle-systems/a/a-particle-system 
 - https://stackoverflow.com/questions/13488957/interpolate-from-one-color-to-another
+- http://gameprogrammingpatterns.com/object-pool.html
