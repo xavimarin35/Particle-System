@@ -18,16 +18,33 @@ Here you can see some examples:
 ![Dragon Ball](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/ExcitableCloudyIslandwhistler-size_restricted.gif)
 
 ![Battlefield](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/giphy%20(1).gif)
+
+
 ## How is organized?
 ### Pool
 The pool improves performance and memory use by reusing objects from a fixed pool instead of allocating and freeing them individually.
 ### Emitter
-The emitter 
-
+The emitter task is to create particles with the characteristics we define.
 ### Particle
+Is simply a rendered sprite that when changing its properties simulates the effects we desire. 
 
+These properties are:
+- **startColor:** initial color of each particle (RGBA).
+- **endColor:** final color of each particle (RGBA).
+- **angle:** angle where particles go.
+- **speed:** the speed of the particles.
+- **particleLife:** how long the particle lives.
+- **emitterLife:** how long the emitter lives.
+- **texRect:** SDL_Texture attributes (x, y, w, h).
+- **randomizer:** randomizes the emission of particles.
+- **size:** size of each particle.
+- **emission:** how many particles are emitted.
 ### ParticleManager
-
+In general terms, is in charge of controlling everything of the system. 
+- Does the Update, PostUpdate, CleanUp... of the emitters created.
+- Loads all the data of the XML file
+- Creates emitters.
+- Destoys the emitters created.
 
 ## How is implemented?
 
