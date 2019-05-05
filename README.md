@@ -23,8 +23,10 @@ Here you can see some examples:
 ## How is organized?
 ### Pool
 The pool improves performance and memory use by reusing objects from a fixed pool instead of allocating and freeing them individually.
+
 ### Emitter
 The emitter task is to create particles with the characteristics we define.
+
 ### Particle
 Is simply a rendered sprite that when changing its properties simulates the effects we desire. 
 
@@ -39,6 +41,7 @@ These properties are:
 - **randomizer:** randomizes the emission of particles.
 - **size:** size of each particle.
 - **emission:** how many particles are emitted.
+
 ### ParticleManager
 In general terms, is in charge of controlling everything of the system. 
 - Does the Update, PostUpdate, CleanUp... of the emitters created.
