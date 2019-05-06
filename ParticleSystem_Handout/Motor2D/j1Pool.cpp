@@ -6,9 +6,13 @@
 j1Pool::j1Pool(j1Emitter* emitter)
 {
 	size = emitter->GetSize();
-	vec = new j1Particle[size];
 
-	startParticle = &vec[0];
+	// TODO 2: Create an array of particles, then assign the first position of the array to a declared particle
+	// Take a look into the j1Pool to know how you must call the array, the first particle and the size!!
+
+
+
+
 }
 
 j1Pool::~j1Pool()

@@ -38,9 +38,9 @@ bool j1Scene::Update(float dt)
 		visibleFire = !visibleFire;
 
 		if (visibleFire == true) {
-			int mx, my;
-			App->input->GetMousePosition(mx, my);
-			fPoint pos = { (float)mx, (float)my };
+			int mouseX, mouseY;
+			App->input->GetMousePosition(mouseX, mouseY);
+			fPoint pos = { (float)mouseX, (float)mouseY };
 
 			mouseFire = App->ps_manager->SpawnEmitter(pos, EMITTER_MOUSE);
 		}
@@ -53,17 +53,18 @@ bool j1Scene::Update(float dt)
 
 	if (mouseFire != nullptr)
 	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos = { (float)mx, (float)my };
-		mouseFire->UpdatePos(pos);
+		// TODO 4: Use the UpdatePos(pos) to make mouseFire emitter follows the position of your mouse 
+
+
+
+
 	}
 
 	if (App->input->GetMouseButtonDown(3) == KEY_DOWN)
 	{
-		int mx, my;
-		App->input->GetMousePosition(mx, my);
-		fPoint pos = { (float)mx, (float)my };
+		int mouseX, mouseY;
+		App->input->GetMousePosition(mouseX, mouseY);
+		fPoint pos = { (float)mouseX, (float)mouseY };
 		staticFire = App->ps_manager->SpawnEmitter(pos, EMITTER_FIRE);
 	}
 

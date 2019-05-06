@@ -75,12 +75,17 @@ float j1Particle::RandomizeParticleColor(float min, float max)
 
 SDL_Color j1Particle::InperpolateColors(SDL_Color color1, SDL_Color color2, float fraction)
 {
-
 	SDL_Color result;
 
-	result.r = (color2.r - color1.r) * fraction + color1.r;
-	result.g = (color2.g - color1.g) * fraction + color1.g;
-	result.b = (color2.b - color1.b) * fraction + color1.b;
+	// TODO 1: Create the function to interpolate colors
+	// The formula of interpolation is: result = (c2 - c1) * f + c1
+	// Remember that a SDL_Color is a struct with 3 primary colors!!
+
+
+
+
+
+
 
 	return result;
 }

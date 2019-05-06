@@ -31,10 +31,13 @@ bool j1ParticleManager::Awake(pugi::xml_node& config)
 	{
 		int typeNum = info.attribute("type").as_int();
 
-		if (typeNum == 1)
-			LoadData(info, EMITTER_MOUSE);
-		else if (typeNum == 2)
-			LoadData(info, EMITTER_FIRE);
+		// TODO 3: Load the data of the emitter depending on the "typeNum" variable
+		// You must use the LoadData(pugi::xml_node& node, EMITTER_TYPE type) function that is in this j1ParticleManager module
+
+
+
+
+
 	}
 
 	return ret;
