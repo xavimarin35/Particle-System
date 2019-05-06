@@ -108,6 +108,37 @@ In order to create particles in the pool we need to ease the values of these par
 ![loadprop](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/propparticle.PNG)
 
 ## TODO's
+### TODO 1
+Create the formula to interpolate colors
+- *The formula of interpolation is: result = (c2 + c1) * f + c1*
+- *Remember that a SDL_Color is a struct with 3 primary colors!!*
+
+**SOLUTION**
+
+![todo1](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/todo1.PNG)
+
+### TODO 2
+Create an array of particles, then assign the first position of the array to a declared particle
+- *Take a look into the j1Pool to know how you must call the array, the first particle and the size!!*
+
+**SOLUTION**
+
+![todo2](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/todo2.PNG)
+
+### TODO 3
+Load the data of the emitter depending on the "typeNum" variable
+- *You must use the LoadData(pugi::xml_node& node, EMITTER_TYPE type) function that is in this j1ParticleManager module*
+
+**SOLUTION**
+
+![todo3](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/todo3.PNG)
+
+### TODO 4
+Use the UpdatePos(pos) to make mouseFire emitter follows the position of your mouse 
+
+**SOLUTION**
+
+![todo4](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/todo4.PNG)
 
 
 ## How does it look this particle system?
