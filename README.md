@@ -86,11 +86,15 @@ When we have declared the array and the first particle, we must create them on t
 
 ![pool]()
 
-Finally, in the update we will check if the particle is alive or not. 
+In the update we will check if the particle is alive or not. 
 
 If it's alive, the Update() and Draw() methods of the j1Particle class are called. But if it's not alive, the first particle will become the first available of the array.
 
 ![poolupdate]()
+
+Finally, must exist a function to create particles with the properties we want
+
+![poolcreate]()
 
 
 ### j1Particle class
