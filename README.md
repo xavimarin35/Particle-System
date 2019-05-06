@@ -50,31 +50,18 @@ In general terms, is in charge of controlling everything of the system.
 - Destoys the emitters created.
 
 ## How is implemented?
-The implementation of this particle system is based on this schema, so I'm going to explain the performance of the system starting from left to right.
+The implementation of this particle system is based on this schema, so I'm going to explain the performance of the system from right to left because is the easiest way to understand how it works.
 
 ![schema](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/schema.png)
 
-### j1ParticleManager class
-Manages the functionality of the emitters by loading their data and calling their modules through a list.
+### j1Particle class
+Every particle has some properties that we must change in order to obtain a particular behaviour. These are the properties:
 
-![modules](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/emitterlist.PNG)
+![prop](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/particlestruct.PNG)
 
-It also spawns the emitters you desire
+In order to create particles in the pool we need to ease the values of these particle properties, so that's why we need this function that will be called in the j1Pool class
 
-![spawn](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/spawnemitter.PNG)
-
-And removes them too
-
-![remove](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/removeemitters.PNG)
-
-### j1Emitter class
-Basically creates an new j1Pool on the constructor
-
-![container](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/emittercontainer.PNG)
-
-And in its Update() method, the container will keep on creating more and more particles with those random values
-
-![updateemitter](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/emitterupdate.PNG)
+![loadprop](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/propparticle.PNG)
 
 ### j1Pool class
 To avoid memory fragmentation we use this class. In games, it's very important to have a good management of memory, that's why is not a good idea to allocate and free individually each particle. 
@@ -97,15 +84,27 @@ Finally, must exist a function to create particles with the properties we want
 
 ![poolcreate](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/poolcreate.PNG)
 
+### j1Emitter class
+Basically creates an new j1Pool on the constructor
 
-### j1Particle class
-Every particle has some properties that we must change in order to obtain a particular behaviour. These are the properties:
+![container](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/emittercontainer.PNG)
 
-![prop](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/particlestruct.PNG)
+And in its Update() method, the container will keep on creating more and more particles with those random values
 
-In order to create particles in the pool we need to ease the values of these particle properties, so that's why we need this function that will be called in the j1Pool class
+![updateemitter](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/emitterupdate.PNG)
 
-![loadprop](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/propparticle.PNG)
+### j1ParticleManager class
+Manages the functionality of the emitters by loading their data and calling their modules through a list.
+
+![modules](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/emitterlist.PNG)
+
+It also spawns the emitters you desire
+
+![spawn](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/spawnemitter.PNG)
+
+And removes them too
+
+![remove](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/removeemitters.PNG)
 
 ## TODO's
 ### TODO 1
