@@ -29,11 +29,11 @@ bool j1ParticleManager::Awake(pugi::xml_node& config)
 
 	for (; info != nullptr; info = info.next_sibling())
 	{
-		int emitterType = info.attribute("type").as_int();
+		int typeNum = info.attribute("type").as_int();
 
-		if (emitterType == 1)
+		if (typeNum == 1)
 			LoadData(info, EMITTER_MOUSE);
-		else if (emitterType == 2)
+		else if (typeNum == 2)
 			LoadData(info, EMITTER_FIRE);
 	}
 

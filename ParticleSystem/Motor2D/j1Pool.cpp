@@ -5,10 +5,10 @@
 
 j1Pool::j1Pool(j1Emitter* emitter)
 {
-	startParticle = &vec[0];
-
 	size = emitter->GetSize();
 	vec = new j1Particle[size];
+
+	startParticle = &vec[0];
 }
 
 j1Pool::~j1Pool()

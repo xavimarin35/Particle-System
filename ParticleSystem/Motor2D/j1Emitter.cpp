@@ -42,10 +42,10 @@ bool j1Emitter::Update(float dt)
 
 		for (int i = 1; i <= emissionRate; i++)
 		{
-			float randSpeed = speed * RandomizeParticles(0.0f, 2.0f);
-			float randAngle = RandomizeParticles(angle.x, angle.y);
-			float randRadius = emitterSize * RandomizeParticles(0.0f, 1.0f);
-			container->CreateParticles(pos, randSpeed, randAngle, randRadius, particleLife, rect, startColor, endColor);
+			randomSpeed = speed * RandomizeParticles(0.0f, 2.0f);
+			randomAngle = RandomizeParticles(angle.x, angle.y);
+			randomSize = emitterSize * RandomizeParticles(0.0f, 1.0f);
+			container->CreateParticles(pos, randomSpeed, randomAngle, randomSize, particleLife, rect, startColor, endColor);
 		}
 
 	return ret;

@@ -31,7 +31,9 @@ void j1Particle::Update(float dt)
 
 void j1Particle::Draw()
 {
-	prop.fraction += (1.0f / prop.startLife);
+	// prop.fraction += (1.0f / prop.startLife) ---> The particle color changes to endColor duris its life
+	// prop.fraction += (0.0f / prop.startLife) ---> The particle color remains the startColor during its life
+	prop.fraction += (RandomizeParticleColor(0.0f, 15.0f) / prop.startLife);
 
 	drawRect = { (int)prop.startSize, (int)prop.startSize };
 	App->render->Blit(App->ps_manager->particle_tex, prop.pos.x + ((drawRect.w - prop.rectSize.w) / 2), prop.pos.y + ((drawRect.h - prop.rectSize.h) / 2), &prop.rect, &prop.rectSize, InperpolateColors(prop.startColor, prop.endColor, prop.fraction));

@@ -24,6 +24,7 @@ public:
 
 	j1Particle* startParticle;
 	j1Particle* vec = nullptr;
+
 	int size = 0;
 };
 

@@ -48,6 +48,10 @@ public:
 	j1Pool* container = nullptr;
 	int size = 5000;
 	bool remove = false;
+
+	float randomSpeed;
+	float randomAngle;
+	float randomSize;
 };
 
 #endif
