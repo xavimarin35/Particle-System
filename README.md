@@ -55,57 +55,57 @@ The implementation of this particle system is based on this schema, so I'm going
 ![schema](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/schema.png)
 
 ### j1ParticleManager class
-This class, as I said before, manages the functionality of the emitters by loading their data and calling their modules through an emitters list.
+Manages the functionality of the emitters by loading their data and calling their modules through a list.
 
+![modules](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/emitterlist.PNG)
 
 It also spawns the emitters you desire
 
-![spawn]()
+![spawn](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/spawnemitter.PNG)
 
 And removes them too
 
-![remove]()
+![remove](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/removeemitters.PNG)
 
 ### j1Emitter class
 Basically creates an new j1Pool on the constructor
 
-![container]()
+![container](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/emittercontainer.PNG)
 
-And in its Update() method, the container will keep on creating more and more particles
+And in its Update() method, the container will keep on creating more and more particles with those random values
 
-![updateemitter]()
+![updateemitter](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/emitterupdate.PNG)
 
 ### j1Pool class
 To avoid memory fragmentation we use this class. In games, it's very important to have a good management of memory, that's why is not a good idea to allocate and free individually each particle. 
 
 So, a pool class is the solution because we are able to reuse particles. To implement it we must declare an array of particles and the first particle of this mentioned array
 
-![pooldeclaration]()
+![pooldeclaration](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/pooldeclaration.PNG)
 
 When we have declared the array and the first particle, we must create them on the constructor
 
-![pool]()
+![pool](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/poolstart.PNG)
 
 In the update we will check if the particle is alive or not. 
 
 If it's alive, the Update() and Draw() methods of the j1Particle class are called. But if it's not alive, the first particle will become the first available of the array.
 
-![poolupdate]()
+![poolupdate](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/poolupdate.PNG)
 
 Finally, must exist a function to create particles with the properties we want
 
-![poolcreate]()
+![poolcreate](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/poolcreate.PNG)
 
 
 ### j1Particle class
 Every particle has some properties that we must change in order to obtain a particular behaviour. These are the properties:
 
-![prop]()
+![prop](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/particlestruct.PNG)
 
 In order to create particles in the pool we need to ease the values of these particle properties, so that's why we need this function that will be called in the j1Pool class
 
-![loadprop]()
-
+![loadprop](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/propparticle.PNG)
 
 ## TODO's
 
