@@ -50,6 +50,51 @@ In general terms, is in charge of controlling everything of the system.
 - Destoys the emitters created.
 
 ## How is implemented?
+The implementation of this particle system is based on this schema, so I'm going to explain the performance of the system starting from left to right.
+
+![schema](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/schema.png)
+
+### j1ParticleManager class
+This class, as I said before, manages the functionality of the emitters by loading their data and calling their modules through an emitters list.
+
+
+It also spawns the emitters you desire
+
+![spawn]()
+
+And removes them too
+
+![remove]()
+
+### j1Emitter class
+Basically creates an new j1Pool on the constructor
+
+![container]()
+
+And in its Update() method, the container will keep on creating more and more particles
+
+![updateemitter]()
+
+### j1Pool class
+To avoid memory fragmentation we use this class. In games, it's very important to have a good management of memory, that's why is not a good idea to allocate and free individually each particle. 
+
+So, a pool class is the solution because we are able to reuse particles. To implement it we must declare an array of particles and the first particle of this mentioned array
+
+![pooldeclaration]()
+
+When we have declared the array and the first particle, we must create them on the constructor
+
+![pool]()
+
+Finally, in the update we will check if the particle is alive or not. 
+
+If it's alive, the Update() and Draw() methods of the j1Particle class are called. But if it's not alive, the first particle will become the first available of the array.
+
+![poolupdate]()
+
+
+### j1Particle class
+
 
 
 ## TODO's
