@@ -31,13 +31,19 @@
     <ClCompile Include="PugiXml\src\pugixml.cpp">
       <Filter>Desenvolupament  ========\Tools\PuguiXML</Filter>
     </ClCompile>
-    <ClCompile Include="j1Particle.cpp">
-      <Filter>Desenvolupament  ========\Particle System</Filter>
+    <ClCompile Include="j1Timer.cpp">
+      <Filter>Desenvolupament  ========\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="j1PerfTimer.cpp">
+      <Filter>Desenvolupament  ========\Tools</Filter>
     </ClCompile>
     <ClCompile Include="j1Emitter.cpp">
       <Filter>Desenvolupament  ========\Particle System</Filter>
     </ClCompile>
     <ClCompile Include="j1ParticleManager.cpp">
+      <Filter>Desenvolupament  ========\Particle System</Filter>
+    </ClCompile>
+    <ClCompile Include="j1Particle.cpp">
       <Filter>Desenvolupament  ========\Particle System</Filter>
     </ClCompile>
     <ClCompile Include="j1Pool.cpp">
@@ -69,13 +75,7 @@
     <ClInclude Include="p2Defs.h">
       <Filter>Programacio 2 ===========</Filter>
     </ClInclude>
-    <ClInclude Include="p2List.h">
-      <Filter>Programacio 2 ===========</Filter>
-    </ClInclude>
     <ClInclude Include="p2Log.h">
-      <Filter>Programacio 2 ===========</Filter>
-    </ClInclude>
-    <ClInclude Include="p2SString.h">
       <Filter>Programacio 2 ===========</Filter>
     </ClInclude>
     <ClInclude Include="p2Point.h">
@@ -90,13 +90,19 @@
     <ClInclude Include="PugiXml\src\pugixml.hpp">
       <Filter>Desenvolupament  ========\Tools\PuguiXML</Filter>
     </ClInclude>
-    <ClInclude Include="j1Particle.h">
-      <Filter>Desenvolupament  ========\Particle System</Filter>
+    <ClInclude Include="j1Timer.h">
+      <Filter>Desenvolupament  ========\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="j1PerfTimer.h">
+      <Filter>Desenvolupament  ========\Tools</Filter>
     </ClInclude>
     <ClInclude Include="j1Emitter.h">
       <Filter>Desenvolupament  ========\Particle System</Filter>
     </ClInclude>
     <ClInclude Include="j1ParticleManager.h">
+      <Filter>Desenvolupament  ========\Particle System</Filter>
+    </ClInclude>
+    <ClInclude Include="j1Particle.h">
       <Filter>Desenvolupament  ========\Particle System</Filter>
     </ClInclude>
     <ClInclude Include="j1Pool.h">
@@ -123,7 +129,7 @@
       <UniqueIdentifier>{7cb78d67-17cc-45eb-af97-e2106becce7b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Desenvolupament  ========\Particle System">
-      <UniqueIdentifier>{a9edce3f-60fe-4567-8496-0a417284426e}</UniqueIdentifier>
+      <UniqueIdentifier>{ea93f3cf-2cfa-4d42-862f-727a238cdcb5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

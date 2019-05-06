@@ -1,33 +1,10 @@
 #ifndef __j1PARTICLE_H__
 #define __j1PARTICLE_H__
 
-#include "j1Module.h"
 #include "p2Point.h"
 #include "SDL/include/SDL.h"
 
 struct SDL_Texture;
-
-/*
-struct ParticleColor
-{
-	uint r, g, b, alpha;
-};
-*/
-
-struct ParticleInfo
-{
-	SDL_Color startColor;
-	SDL_Color endColor;
-	fPoint pos;
-	fPoint vel;
-	int life;
-	float startSize;
-	float endSize;
-
-	SDL_BlendMode blend;
-	SDL_Texture* tex;
-};
-
 
 class j1Particle
 {
@@ -36,23 +13,32 @@ public:
 	j1Particle();
 	~j1Particle();
 
-	bool Update(float dt);
-	bool CleanUp();
+	struct ParticleProperties
+	{
+		fPoint pos;
+		fPoint speed;
+		float size;
+		float startSize;
+		int life;
+		int startLife;
+		SDL_Rect rect;
+		SDL_Rect rectSize;
+		SDL_Color startColor;
+		SDL_Color endColor;
+		float transparency;
+		float fraction;
+		
+	} prop;
 
-private:
+	SDL_Rect drawRect;
 
-	int framesLeft_;
+	void Update(float dt);
+	void Draw();
+	bool Living();
 
-	SDL_Color startColor;
-	SDL_Color endColor;
-	fPoint pos;
-	fPoint vel;
-	int life;
-	float startSize;
-	float endSize;
-
-	SDL_BlendMode blend;
-	SDL_Texture* tex = nullptr;
+	float RandomizeParticleColor(float min, float max);
+	void LoadParticleProperties(fPoint pos, float speed, float angle, float size, int life, SDL_Rect tex, SDL_Color startColor, SDL_Color endColor);
+	SDL_Color InperpolateColors(SDL_Color startColor, SDL_Color endColor, float fraction);
 };
 
-#endif // __j1PARTICLE_H__
+#endif

@@ -38,10 +38,13 @@ public:
 	SDL_Surface* screen_surface;
 
 private:
-	p2SString	title;
-	uint		width;
-	uint		height;
-	uint		scale;
+	std::string	title;
+	std::string	icon;
+
+	// Screen parameters
+	uint		width = 0u;
+	uint		height = 0u;
+	uint		scale = 0u;
 };
 
 #endif // __j1WINDOW_H__

@@ -12,20 +12,19 @@
 #include "j1ParticleManager.h"
 #include "j1App.h"
 
-
 // Constructor
 j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 {
-	frames = 0;
-	want_to_save = want_to_load = false;
+	PERF_START(ptimer);
 
 	input = new j1Input();
 	win = new j1Window();
 	render = new j1Render();
 	tex = new j1Textures();
 	audio = new j1Audio();
-	scene = new j1Scene();
 	ps_manager = new j1ParticleManager();
+	scene = new j1Scene();
+	
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -33,33 +32,32 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(win);
 	AddModule(tex);
 	AddModule(audio);
-	AddModule(scene);
 	AddModule(ps_manager);
+	AddModule(scene);
 	
 
-	// render last to swap buffer
+	// Render last to swap buffer
 	AddModule(render);
+
+	PERF_PEEK(ptimer);
 }
 
 // Destructor
 j1App::~j1App()
 {
 	// release modules
-	p2List_item<j1Module*>* item = modules.end;
-
-	while(item != NULL)
+	std::list<j1Module*>::reverse_iterator it;
+	for (it = modules.rbegin(); it != modules.rend(); ++it)
 	{
-		RELEASE(item->data);
-		item = item->prev;
+		delete (*it);
 	}
-
 	modules.clear();
 }
 
 void j1App::AddModule(j1Module* module)
 {
 	module->Init();
-	modules.add(module);
+	modules.push_back(module);
 }
 
 // Called before render is available
@@ -78,21 +76,24 @@ bool j1App::Awake()
 		// self-config
 		ret = true;
 		app_config = config.child("app");
-		title.create(app_config.child("title").child_value());
-		organization.create(app_config.child("organization").child_value());
-	}
+		title = app_config.child("title").child_value();
+		organization = app_config.child("organization").child_value();
+		int cap = app_config.attribute("framerate_cap").as_int();
 
-	if(ret == true)
-	{
-		p2List_item<j1Module*>* item;
-		item = modules.start;
-
-		while(item != NULL && ret == true)
+		if (cap > 0)
 		{
-			ret = item->data->Awake(config.child(item->data->name.GetString()));
-			item = item->next;
+			capped_ms = 1000 / cap;
 		}
 	}
+
+	std::list<j1Module*>::const_iterator item;
+
+	for (item = modules.begin(); item != modules.end() && ret == true; ++item)
+	{
+		ret = (*item)->Awake(config.child((*item)->name.data()));
+	}
+
+	PERF_PEEK(ptimer);
 
 	return ret;
 }
@@ -100,15 +101,17 @@ bool j1App::Awake()
 // Called before the first frame
 bool j1App::Start()
 {
+	PERF_START(ptimer);
 	bool ret = true;
-	p2List_item<j1Module*>* item;
-	item = modules.start;
+	std::list<j1Module*>::const_iterator item;
 
-	while(item != NULL && ret == true)
+	for (item = modules.begin(); item != modules.end() && ret == true; ++item)
 	{
-		ret = item->data->Start();
-		item = item->next;
+		if ((*item)->active)
+			ret = (*item)->Start();
 	}
+
+	PERF_PEEK(ptimer);
 
 	return ret;
 }
@@ -150,38 +153,74 @@ pugi::xml_node j1App::LoadConfig(pugi::xml_document& config_file) const
 	return ret;
 }
 
+pugi::xml_node j1App::LoadParticleSystemConfig(pugi::xml_document& ps_file)
+{
+	pugi::xml_node ret;
+
+	pugi::xml_parse_result result = ps_file.load_file("ps_config");
+
+	if (result == NULL)
+		LOG("Could not load xml file config.xml. pugi error: %s", result.description());
+	else
+		ret = ps_file.child("particlesystem");
+	return ret;
+}
 // ---------------------------------------------
 void j1App::PrepareUpdate()
 {
+	frame_count++;
+	last_sec_frame_count++;
+
+	dt = frame_time.ReadSec();
+	frame_time.Start();
 }
 
 // ---------------------------------------------
 void j1App::FinishUpdate()
 {
-	if(want_to_save == true)
-		SavegameNow();
+	// Framerate calculations --
 
-	if(want_to_load == true)
-		LoadGameNow();
+	if (last_sec_frame_time.Read() > 1000)
+	{
+		last_sec_frame_time.Start();
+		prev_last_sec_frame_count = last_sec_frame_count;
+		last_sec_frame_count = 0;
+	}
+
+	float avg_fps = float(frame_count) / startup_time.ReadSec();
+	float seconds_since_startup = startup_time.ReadSec();
+	uint32 last_frame_ms = frame_time.Read();
+	uint32 frames_on_last_update = prev_last_sec_frame_count;
+
+	static char title[256];
+	sprintf_s(title, 256, "2D Particle System for Project II");
+
+	App->win->SetTitle(title);
+
+	if (capped_ms > 0 && last_frame_ms < capped_ms)
+	{
+		j1PerfTimer t;
+		SDL_Delay(capped_ms - last_frame_ms);
+	}
 }
 
 // Call modules before each loop iteration
 bool j1App::PreUpdate()
 {
 	bool ret = true;
-	p2List_item<j1Module*>* item;
-	item = modules.start;
-	j1Module* pModule = NULL;
 
-	for(item = modules.start; item != NULL && ret == true; item = item->next)
+	std::list<j1Module*>::const_iterator item;
+	j1Module* pModule = nullptr;
+
+	for (item = modules.begin(); item != modules.end() && ret == true; ++item)
 	{
-		pModule = item->data;
+		pModule = (*item);
 
-		if(pModule->active == false) {
+		if (pModule->active == false) {
 			continue;
 		}
 
-		ret = item->data->PreUpdate();
+		ret = (*item)->PreUpdate();
 	}
 
 	return ret;
@@ -191,19 +230,19 @@ bool j1App::PreUpdate()
 bool j1App::DoUpdate()
 {
 	bool ret = true;
-	p2List_item<j1Module*>* item;
-	item = modules.start;
-	j1Module* pModule = NULL;
 
-	for(item = modules.start; item != NULL && ret == true; item = item->next)
+	std::list<j1Module*>::const_iterator item;
+	j1Module* pModule = nullptr;
+
+	for (item = modules.begin(); item != modules.end() && ret == true; ++item)
 	{
-		pModule = item->data;
+		pModule = (*item);
 
-		if(pModule->active == false) {
+		if (pModule->active == false) {
 			continue;
 		}
 
-		ret = item->data->Update(dt);
+		ret = (*item)->Update(dt);
 	}
 
 	return ret;
@@ -213,18 +252,19 @@ bool j1App::DoUpdate()
 bool j1App::PostUpdate()
 {
 	bool ret = true;
-	p2List_item<j1Module*>* item;
-	j1Module* pModule = NULL;
 
-	for(item = modules.start; item != NULL && ret == true; item = item->next)
+	std::list<j1Module*>::const_iterator item;
+	j1Module* pModule = nullptr;
+
+	for (item = modules.begin(); item != modules.end() && ret == true; ++item)
 	{
-		pModule = item->data;
+		pModule = (*item);
 
-		if(pModule->active == false) {
+		if (pModule->active == false) {
 			continue;
 		}
 
-		ret = item->data->PostUpdate();
+		ret = (*item)->PostUpdate();
 	}
 
 	return ret;
@@ -233,16 +273,17 @@ bool j1App::PostUpdate()
 // Called before quitting
 bool j1App::CleanUp()
 {
+	PERF_START(ptimer);
 	bool ret = true;
-	p2List_item<j1Module*>* item;
-	item = modules.end;
 
-	while(item != NULL && ret == true)
+	std::list<j1Module*>::reverse_iterator it;
+
+	for (it = modules.rbegin(); it != modules.rend(); ++it)
 	{
-		ret = item->data->CleanUp();
-		item = item->prev;
+		ret = (*it)->CleanUp();
 	}
 
+	PERF_PEEK(ptimer);
 	return ret;
 }
 
@@ -264,104 +305,12 @@ const char* j1App::GetArgv(int index) const
 // ---------------------------------------
 const char* j1App::GetTitle() const
 {
-	return title.GetString();
+	return title.data();
 }
 
 // ---------------------------------------
 const char* j1App::GetOrganization() const
 {
-	return organization.GetString();
+	return organization.data();
 }
 
-// Load / Save
-void j1App::LoadGame()
-{
-	// we should be checking if that file actually exist
-	// from the "GetSaveGames" list
-	want_to_load = true;
-}
-
-// ---------------------------------------
-void j1App::SaveGame() const
-{
-	// we should be checking if that file actually exist
-	// from the "GetSaveGames" list ... should we overwrite ?
-
-	want_to_save = true;
-}
-
-// ---------------------------------------
-void j1App::GetSaveGames(p2List<p2SString>& list_to_fill) const
-{
-	// need to add functionality to file_system module for this to work
-}
-
-bool j1App::LoadGameNow()
-{
-	bool ret = false;
-
-	pugi::xml_document data;
-	pugi::xml_node root;
-
-	pugi::xml_parse_result result = data.load_file(load_game.GetString());
-
-	if(result != NULL)
-	{
-		LOG("Loading new Game State from %s...", load_game.GetString());
-
-		root = data.child("game_state");
-
-		p2List_item<j1Module*>* item = modules.start;
-		ret = true;
-
-		while(item != NULL && ret == true)
-		{
-			ret = item->data->Load(root.child(item->data->name.GetString()));
-			item = item->next;
-		}
-
-		data.reset();
-		if(ret == true)
-			LOG("...finished loading");
-		else
-			LOG("...loading process interrupted with error on module %s", (item != NULL) ? item->data->name.GetString() : "unknown");
-	}
-	else
-		LOG("Could not parse game state xml file %s. pugi error: %s", load_game.GetString(), result.description());
-
-	want_to_load = false;
-	return ret;
-}
-
-bool j1App::SavegameNow() const
-{
-	bool ret = true;
-
-	LOG("Saving Game State to %s...", save_game.GetString());
-
-	// xml object were we will store all data
-	pugi::xml_document data;
-	pugi::xml_node root;
-	
-	root = data.append_child("game_state");
-
-	p2List_item<j1Module*>* item = modules.start;
-
-	while(item != NULL && ret == true)
-	{
-		ret = item->data->Save(root.append_child(item->data->name.GetString()));
-		item = item->next;
-	}
-
-	if(ret == true)
-	{
-		data.save_file(save_game.GetString());
-		LOG("... finished saving", );
-	}
-	else
-		LOG("Save process halted from an error in module %s", (item != NULL) ? item->data->name.GetString() : "unknown");
-
-	data.reset();
-	want_to_save = false;
-	return ret;
-}

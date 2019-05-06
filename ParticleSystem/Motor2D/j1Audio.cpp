@@ -1,7 +1,6 @@
 #include "p2Defs.h"
 #include "p2Log.h"
 #include "j1Audio.h"
-#include "p2List.h"
 
 #include "SDL/include/SDL.h"
 #include "SDL_mixer\include\SDL_mixer.h"
@@ -10,7 +9,7 @@
 j1Audio::j1Audio() : j1Module()
 {
 	music = NULL;
-	name.create("audio");
+	name = "audio";
 }
 
 // Destructor
@@ -66,9 +65,11 @@ bool j1Audio::CleanUp()
 		Mix_FreeMusic(music);
 	}
 
-	p2List_item<Mix_Chunk*>* item;
-	for(item = fx.start; item != NULL; item = item->next)
-		Mix_FreeChunk(item->data);
+	std::list<Mix_Chunk*>::reverse_iterator it;
+	for (it = fx.rbegin(); it != fx.rend(); ++it)
+	{
+		Mix_FreeChunk(*it);
+	}
 
 	fx.clear();
 
@@ -149,8 +150,8 @@ unsigned int j1Audio::LoadFx(const char* path)
 	}
 	else
 	{
-		fx.add(chunk);
-		ret = fx.count();
+		fx.push_back(chunk);
+		ret = fx.size();
 	}
 
 	return ret;
@@ -164,10 +165,10 @@ bool j1Audio::PlayFx(unsigned int id, int repeat)
 	if(!active)
 		return false;
 
-	if(id > 0 && id <= fx.count())
+	/*if(id > 0 && id <= fx.size())
 	{
-		Mix_PlayChannel(-1, fx[id - 1], repeat);
-	}
+		Mix_PlayChannel(-1, (*fx).[id - 1], repeat);
+	}*/
 
 	return ret;
 }

@@ -1,23 +1,17 @@
-#include "p2Defs.h"
-#include "p2Log.h"
 #include "j1App.h"
 #include "j1Input.h"
-#include "j1Textures.h"
-#include "j1Audio.h"
-#include "j1Render.h"
-#include "j1Window.h"
 #include "j1Scene.h"
+#include "p2Log.h"
+#include "j1Audio.h"
 
 j1Scene::j1Scene() : j1Module()
 {
-	name.create("scene");
+	name = "scene";
 }
 
-// Destructor
 j1Scene::~j1Scene()
 {}
 
-// Called before render is available
 bool j1Scene::Awake()
 {
 	LOG("Loading Scene");
@@ -26,45 +20,77 @@ bool j1Scene::Awake()
 	return ret;
 }
 
-// Called before the first frame
 bool j1Scene::Start()
 {
-	
 	return true;
 }
 
-// Called each loop iteration
 bool j1Scene::PreUpdate()
 {
 	return true;
 }
 
-// Called each loop iteration
 bool j1Scene::Update(float dt)
 {
+
+	if (App->input->GetMouseButtonDown(1) == KEY_DOWN)
+	{
+		visibleFire = !visibleFire;
+
+		if (visibleFire == true) {
+			int mx, my;
+			App->input->GetMousePosition(mx, my);
+			fPoint pos = { (float)mx, (float)my };
+
+			mouseFire = App->ps_manager->SpawnEmitter(pos, EMITTER_MOUSE);
+		}
 	
+		else if (visibleFire == false) 
+		{
+			App->ps_manager->RemoveMouseFire(*mouseFire);
+		}
+	}
 
-	p2SString title("2D Particle System");
+	if (mouseFire != nullptr)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos = { (float)mx, (float)my };
+		mouseFire->UpdatePos(pos);
+	}
 
-	App->win->SetTitle(title.GetString());
+	if (App->input->GetMouseButtonDown(3) == KEY_DOWN)
+	{
+		int mx, my;
+		App->input->GetMousePosition(mx, my);
+		fPoint pos = { (float)mx, (float)my };
+		staticFire = App->ps_manager->SpawnEmitter(pos, EMITTER_FIRE);
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	{
+		App->ps_manager->RemoveEverything();
+	}
+
 	return true;
 }
 
-// Called each loop iteration
 bool j1Scene::PostUpdate()
 {
 	bool ret = true;
 
-	if(App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
 
 	return ret;
 }
 
-// Called before quitting
 bool j1Scene::CleanUp()
 {
 	LOG("Freeing scene");
+
+	mouseFire = nullptr;
+	staticFire = nullptr;
 
 	return true;
 }
