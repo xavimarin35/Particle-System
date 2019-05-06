@@ -112,6 +112,7 @@ In order to create particles in the pool we need to ease the values of these par
 
 ## How does it look this particle system?
 
+![gif](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/psXavi.gif)
 
 ## References
 - https://gamedevelopment.tutsplus.com/tutorials/make-your-game-pop-with-particle-effects-and-quadtrees--gamedev-2138 
