@@ -94,7 +94,13 @@ If it's alive, the Update() and Draw() methods of the j1Particle class are calle
 
 
 ### j1Particle class
+Every particle has some properties that we must change in order to obtain a particular behaviour. These are the properties:
 
+![prop]()
+
+In order to create particles in the pool we need to ease the values of these particle properties, so that's why we need this function that will be called in the j1Pool class
+
+![loadprop]()
 
 
 ## TODO's
