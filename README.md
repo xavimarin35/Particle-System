@@ -11,7 +11,7 @@ Feel free to visit:
 - [Particle System Website](https://xavimarin35.github.io/Particle-System/)
 
 ## General Controls
-- LEFT MOUSE BUTTON: Enable or disable fire on current mouse position.
+- LEFT MOUSE BUTTON: Enable or disable emitter on current mouse position.
 - RIGHT MOUSE BUTTON: Create an emitter on current mouse position.
 - SPACE: Remove all the emitters of the screen.
 
