@@ -79,7 +79,7 @@ SDL_Color j1Particle::InperpolateColors(SDL_Color color1, SDL_Color color2, floa
 
 	// TODO 1: Create the function to interpolate colors
 	// The formula of interpolation is: result = (c2 - c1) * f + c1
-	// Remember that a SDL_Color is a struct with 3 primary colors!!
+	// Remember that a SDL_Color is a struct with 3 primary colors (RGB)
 
 
 
