@@ -33,11 +33,13 @@ Is simply a rendered sprite that when changing its properties simulates the effe
 These properties are:
 - **startColor:** initial color of each particle (RGBA).
 - **endColor:** final color of each particle (RGBA).
+- **pos** : position where spawn the particle
 - **angle:** angle where particles go.
 - **speed:** the speed of the particles.
 - **particleLife:** how long the particle lives.
-- **emitterLife:** how long the emitter lives.
-- **texRect:** SDL_Texture attributes (x, y, w, h).
+- **transparency:** how the particle fades out depending on its life
+- **fraction:** how the particle changes color during its life
+- **rect:** SDL_Rect attributes (x, y, w, h).
 - **randomizer:** randomizes the emission of particles.
 - **size:** size of each particle.
 - **emission:** how many particles are emitted.
