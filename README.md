@@ -142,7 +142,7 @@ Use the UpdatePos(pos) to make mouseFire emitter follows the position of your mo
 ![todo4](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/todo4.PNG)
 
 
-## How does it look this particle system?
+## How does this particle system look like?
 
 ![gif](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/psXavi.gif)
 
