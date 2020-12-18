@@ -5,6 +5,9 @@ I am [Xavi Marín Solà](https://www.linkedin.com/in/xavi-mar%C3%ADn-sol%C3%A0-8
 This content is generated for the second year’s subject Project 2, under supervision of lecturer
 [Ricard Pillosu](https://es.linkedin.com/in/ricardpillosu).
 
+### My approach
+![gif](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/psXavi.gif)
+
 ## About particle systems
 ### What are them?
 A particle system is a collection of many many minute particles that together represent a fuzzy object. Over a period of time, particles are generated into a system, move and change from within the system, and die from the system.
@@ -141,10 +144,6 @@ Use the UpdatePos(pos) to make mouseFire emitter follows the position of your mo
 
 ![todo4](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/todo4.PNG)
 
-
-## How does this particle system look like?
-
-![gif](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/psXavi.gif)
 
 ## References
 - https://gamedevelopment.tutsplus.com/tutorials/make-your-game-pop-with-particle-effects-and-quadtrees--gamedev-2138 
