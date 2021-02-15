@@ -17,7 +17,7 @@ Here you can see some examples:
 
 ![Battlefield](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/giphy%20(1).gif)
 
-## Showcase 
+## My approach 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xiGorvuZTmw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
