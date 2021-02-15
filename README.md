@@ -5,9 +5,6 @@ I am [Xavi Marín Solà](https://www.linkedin.com/in/xavi-mar%C3%ADn-sol%C3%A0-8
 This content is generated for the second year’s subject Project 2, under supervision of lecturer
 [Ricard Pillosu](https://es.linkedin.com/in/ricardpillosu).
 
-### My approach
-![gif](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/psXavi.gif)
-
 ## About particle systems
 ### What are them?
 A particle system is a collection of many many minute particles that together represent a fuzzy object. Over a period of time, particles are generated into a system, move and change from within the system, and die from the system.
@@ -18,9 +15,11 @@ Since the early 1980s, particle systems have been used in countless videogames, 
 Particle systems are important because they have a notorious visual impact that make the player experience better.
 Here you can see some examples:
 
-![Dragon Ball](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/ExcitableCloudyIslandwhistler-size_restricted.gif)
-
 ![Battlefield](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/giphy%20(1).gif)
+
+## Showcase 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xiGorvuZTmw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 ## How is organized?
