@@ -5,6 +5,8 @@ I am [Xavi Marín Solà](https://www.linkedin.com/in/xavi-mar%C3%ADn-sol%C3%A0-8
 This content is generated for the second year’s subject Project 2, under supervision of lecturer
 [Ricard Pillosu](https://es.linkedin.com/in/ricardpillosu).
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xiGorvuZTmw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## About particle systems
 ### What are them?
 A particle system is a collection of many many minute particles that together represent a fuzzy object. Over a period of time, particles are generated into a system, move and change from within the system, and die from the system.
@@ -16,11 +18,6 @@ Particle systems are important because they have a notorious visual impact that 
 Here you can see some examples:
 
 ![Battlefield](https://raw.githubusercontent.com/xavimarin35/Particle-System/gh-pages/Info/giphy%20(1).gif)
-
-## My approach 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xiGorvuZTmw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 ## How is organized?
 ### Pool
